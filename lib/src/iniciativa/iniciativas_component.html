@@ -1,0 +1,49 @@
+<material-fab raised (trigger)="navegarParaDetalhe(null, $event)">
+    <material-icon icon="add"></material-icon>
+</material-fab>
+<material-list>
+    <div *ngFor="let item of iniciativas">
+        <material-list-item  class="shadow-box-list" elevation="2" (trigger)="navegarParaItensTrabalho(item)">
+            <div>
+                <h4>{{item.nome}}</h4>
+                <material-progress class="width-300" [activeProgress]="25"></material-progress><span> 25%</span>
+                <p>{{item.descricao}}</p>
+            </div>
+            <div class="material-spacer"></div>
+            <div class="right">
+                <material-button  icon (trigger)="navegarParaDetalhe(item, $event)">
+                    <material-icon icon="more_vert"></material-icon>
+                </material-button>
+            </div>
+        </material-list-item>
+    </div>
+    <!--
+    <modal [visible]="chaveSelecionada != null">
+
+        <auge-empresa-detalhe ></auge-empresa-detalhe>
+
+    </modal>
+        <router-outlet></router-outlet>
+-->
+
+</material-list>
+<router-outlet [routes]="rotas"></router-outlet>
+
+
+<!--
+<div *ngFor="let e of empresas;let i = index">
+
+    <material-input class="width-300" [(ngModel)]="e.nome" floatingLabel label="Nome da Empresa" required [requiredErrorMsg]="msgValorRequerido" (ngModelChange)="modeloAlterado(i, true)"></material-input>
+    <material-input [(ngModel)]="e.cnpj" floatingLabel label="CNPJ" (ngModelChange)="modeloAlterado(i, true)"></material-input>
+    <material-button [disabled]="desabilitarSalvar(i)" icon (trigger)="salvarEmpresa(i);modeloAlterado(i, false)">
+        <material-icon icon="save"></material-icon>
+    </material-button>
+    <material-button icon (trigger)="excluirEmpresa(i);modeloAlterado(i, false)">
+        <material-icon icon="delete"></material-icon>
+    </material-button>
+    <material-button icon [disabled]="desabilitarCancelar(i)" (trigger)="cancelarEmpresa(i);modeloAlterado(i, false)">
+        <material-icon icon="cancel"></material-icon>
+    </material-button>
+
+</div>
+-->

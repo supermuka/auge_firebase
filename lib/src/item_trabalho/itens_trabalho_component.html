@@ -1,0 +1,21 @@
+<!--
+<material-fab raised (trigger)="navegarPara(null)">
+-->
+<material-fab raised (click)="navegarPara(null)">
+    <material-icon icon="add"></material-icon>
+</material-fab>
+
+<material-list>
+    <div *ngFor="let item of itensTrabalho">
+        <div class="shadow-box" elevation="2">
+            <material-list-item (trigger)="navegarPara(item)">
+                <div>
+                    <p class="negrito">{{item.nome}}</p>
+                    <material-progress class="width-300" [activeProgress]="25"></material-progress><span> 25%</span>
+                </div>
+            </material-list-item>
+        </div>
+    </div>
+</material-list>
+
+<router-outlet [routes]="rotas"></router-outlet>

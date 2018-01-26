@@ -1,0 +1,47 @@
+<material-fab raised (trigger)="chamarDetalhe(null)">
+    <material-icon icon="add"></material-icon>
+</material-fab>
+
+
+<material-list>
+    <router-outlet [routes]="rotas"></router-outlet>
+    <div *ngFor="let item of empresas;let i = index">
+
+      <material-list-item class="shadow-box-list" elevation="2" (trigger)="navegarPara(item)">
+
+        <!--
+       <material-list-item (trigger)="chamarDetalhe(item);e = item">
+       -->
+           {{item.nome}}
+
+       </material-list-item>
+
+        <div *ngIf="apresentarDetalhe() == true">
+            <auge-empresa-detalhe></auge-empresa-detalhe>
+        </div>
+   </div>
+<!--
+   <div *ngIf="apresentarDetalhe()">
+       <auge-empresa-detalhe [empresa]="e" ></auge-empresa-detalhe>
+   </div>
+-->
+</material-list>
+
+
+<!--
+<div *ngFor="let e of empresas;let i = index">
+
+    <material-input class="width-300" [(ngModel)]="e.nome" floatingLabel label="Nome da Empresa" required [requiredErrorMsg]="msgValorRequerido" (ngModelChange)="modeloAlterado(i, true)"></material-input>
+    <material-input [(ngModel)]="e.cnpj" floatingLabel label="CNPJ" (ngModelChange)="modeloAlterado(i, true)"></material-input>
+    <material-button [disabled]="desabilitarSalvar(i)" icon (trigger)="salvarEmpresa(i);modeloAlterado(i, false)">
+        <material-icon icon="save"></material-icon>
+    </material-button>
+    <material-button icon (trigger)="excluirEmpresa(i);modeloAlterado(i, false)">
+        <material-icon icon="delete"></material-icon>
+    </material-button>
+    <material-button icon [disabled]="desabilitarCancelar(i)" (trigger)="cancelarEmpresa(i);modeloAlterado(i, false)">
+        <material-icon icon="cancel"></material-icon>
+    </material-button>
+
+</div>
+-->

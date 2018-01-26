@@ -1,0 +1,39 @@
+<modal [visible]="true">
+    <material-dialog headered class="headered-dialog">
+
+        <div header>
+            <h3>Empresa</h3>
+        </div>
+
+
+        <!--
+        <div class="shadow-box"  elevation="2" >
+            <br/>
+            <br/>
+        -->
+        <material-content>
+
+            <material-input class="width-300" [(ngModel)]="empresa.nome" floatingLabel label="Nome da Empresa" required [requiredErrorMsg]="msgValorRequerido"></material-input>
+
+            <material-input [(ngModel)]="empresa.cnpj" floatingLabel label="CNPJ"></material-input>
+
+        </material-content>
+
+        <div footer>
+            <material-button  icon (trigger)="salvarEmpresa()">
+                <material-icon icon="save"></material-icon>
+            </material-button>
+            <material-button icon [disabled]= "empresa.chave == null" (trigger)="excluirEmpresa()">
+                <material-icon icon="delete"></material-icon>
+            </material-button>
+            <material-button autoFocus icon (trigger)="fechar()">
+                <material-icon icon="close"></material-icon>
+            </material-button>
+
+        </div>
+        <!--
+        </div>
+        -->
+    </material-dialog>
+</modal>
+

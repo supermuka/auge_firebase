@@ -1,0 +1,49 @@
+<material-fab raised (trigger)="adicionarConta()">
+    <material-icon icon="add"></material-icon>
+</material-fab>
+
+<div class="lista-margem" *ngFor="let c of contas;let i = index">
+    <div class="material-box-detail-{{c.detalhe}}">
+        <material-input class="width-300" [(ngModel)]="c.conta.nome" floatingLabel label="Nome da Conta"  required [requiredErrorMsg]="msgValorRequerido" (ngModelChange)="modeloAlterado(i, true)"></material-input>
+        <material-input class="width-300" [(ngModel)]="c.conta.eMail" floatingLabel label="E-Mail" required [requiredErrorMsg]="msgValorRequerido" (ngModelChange)="modeloAlterado(i, true)"></material-input>
+        <material-input [(ngModel)]="c.conta.senha" floatingLabel label="Senha" required [requiredErrorMsg]="msgValorRequerido" (ngModelChange)="modeloAlterado(i, true)"></material-input>
+        <material-input [(ngModel)]="c.conta.uidAutenticacao" disabled floatingLabel label="Identificação Autenticação" (ngModelChange)="modeloAlterado(i, true)"></material-input>
+        <material-checkbox [(ngModel)]="c.conta.ehAdministrador"  label="Administrador"></material-checkbox>
+
+        <material-button icon (trigger)="c.detalhe = !c.detalhe">
+            <material-icon icon="more_vert"></material-icon>
+        </material-button>
+        <material-button [disabled]="desabilitarSalvar(i)" icon (trigger)="salvarConta(i)">
+            <material-icon icon="save"></material-icon>
+        </material-button>
+        <material-button icon (trigger)="excluirConta(i)">
+            <material-icon icon="delete"></material-icon>
+        </material-button>
+        <material-button [disabled]="desabilitarCancelar(i)" icon (trigger)="cancelarConta(i);modeloAlterado(i, false)">
+            <material-icon icon="cancel"></material-icon>
+        </material-button>
+        <div *ngIf="c.detalhe">
+
+            <h4> Empresa </h4>
+            <material-dropdown-select [buttonText]="singleSelectEmpresaLabel"
+                                      [(selection)]="empresaSelectModel"
+                                      [options]="empresaOptions"
+                                      [itemRenderer]="empresaItemRenderer">
+            </material-dropdown-select>
+
+            <material-fab mini raised [disabled]="desabilitarAdicionarEmpresa(i)" (trigger)="adicionarEmpresa(i);modeloAlterado(i, true)">
+                <material-icon icon="add"></material-icon>
+            </material-fab>
+            <br/>
+            <div *ngFor="let e of c.conta.empresas;let ii = index">
+
+                <material-input class="width-300" [(ngModel)]="e.nome" floatingLabel label="Empresa" [disabled]="true"></material-input>
+                <material-input [(ngModel)]="e.cnpj" floatingLabel label="CNPJ" [disabled]="true"></material-input>
+
+                <material-button icon (trigger)="excluirEmpresa(i,ii);modeloAlterado(i, true)">
+                    <material-icon icon="clear"></material-icon>
+                </material-button>
+            </div>
+        </div>
+    </div>
+</div>

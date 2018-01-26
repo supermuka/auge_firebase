@@ -1,0 +1,35 @@
+@import 'package:angular_components/css/material/material';
+@import 'package:angular_components/css/material/shadow';
+@import 'package:angular_components/material_button/mixins';
+@import 'package:angular_components/material_dialog/mixins';
+
+
+material-fab {
+    position: fixed;
+    z-index: 9999999;
+    right: 32px;
+    background-color: $mat-red;
+    color: $mat-white;
+}
+
+.width-300 {
+   width: 300px;
+}
+
+/*
+material-list-item {
+   text-overflow: ellipsis;
+   white-space: normal;
+}
+*/
+
+.shadow-box {
+   @include material-shadow();
+   overflow: hidden;
+}
+
+.shadow-box-list {
+   @include material-shadow();
+   padding: 8px;
+   margin: 8px;
+}

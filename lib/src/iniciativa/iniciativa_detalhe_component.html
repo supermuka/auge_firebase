@@ -1,0 +1,42 @@
+
+<modal [visible]="true">
+
+
+        <material-dialog headered class="headered-dialog">
+
+            <div header>
+                <h3 *ngIf="iniciativa.chave == null">Adicionar Iniciativa</h3>
+                <h3 *ngIf="iniciativa.chave != null">Editar Iniciativa</h3>
+            </div>
+<!--
+<div class="container">
+
+    <div class="shadow-box-form"  elevation="2">
+-->
+            <material-input class="width-300" [(ngModel)]="iniciativa.nome" floatingLabel label="Nome da Iniciativa" required [requiredErrorMsg]="msgValorRequerido"></material-input>
+            <br/>
+            <material-input class="width-300" [(ngModel)]="iniciativa.descricao" floatingLabel multiline rows="3" label="Descrição da Iniciativa"></material-input>
+
+        <div footer>
+            <material-button  (trigger)="salvar()">Salvar
+                <material-icon icon="save"></material-icon>
+            </material-button>
+
+            <material-button   [disabled]= "iniciativa.chave == null" (trigger)="excluir()">Excluir
+                <material-icon icon="delete"></material-icon>
+            </material-button>
+
+            <material-button  autoFocus  (trigger)="voltar()">Voltar
+                <material-icon icon="arrow_back"></material-icon>
+            </material-button>
+        </div>
+            <!--
+    </div>
+</div>
+-->
+    </material-dialog>
+
+</modal>
+
+
+

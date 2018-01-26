@@ -1,0 +1,26 @@
+<div class="container">
+
+    <div class="material-box">
+        <h2>AUGE</h2>
+        <h4>Estratégia, objetivos e iniciativas</h4>
+        <hr>
+        <material-input label="E-mail"
+                    type="email"
+                    autoFocus floatingLabel
+                    required
+                    [requiredErrorMsg]="'Entre com um valor'"
+                    [(ngModel)]="eMail">
+        </material-input>
+        <br/>
+        <material-input label="Senha"
+                        type="password"
+                        floatingLabel
+                        required
+                        [(ngModel)]="senha">
+        </material-input>
+        <br/>
+        <material-button raised class="red" (trigger)="entrarAutenticacao(eMail,senha)">Entrar</material-button>
+        <br/>
+        <p>{{error}}</p>
+    </div>
+</div>

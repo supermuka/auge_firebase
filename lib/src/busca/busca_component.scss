@@ -1,0 +1,40 @@
+@import 'package:angular_components/css/material/material';
+
+/*
+material-input {
+  width: 300px;
+}
+*/
+/*
+:host ::ng-deep material-input div .underline {
+   display: none;
+}
+
+:host ::ng-deep material-input input {
+   background-color: white;
+
+}
+*/
+
+div {
+  display: flex;
+  justify-content:center;
+  align-content:center;
+}
+
+input {
+  margin-top:  0px;
+  padding-top: 0px;
+  width: 300px;
+}
+
+:host ::ng-deep input {
+  margin-top:  0px;
+  padding-top: 0px;
+}
+
+material-icon {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+

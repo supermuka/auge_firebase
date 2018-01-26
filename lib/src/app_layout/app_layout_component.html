@@ -1,0 +1,64 @@
+<material-drawer  temporary #drawer="drawer">
+    <material-list class="menu-drawer" *deferredContent>
+        <div group class="mat-drawer-spacer"></div>
+        <div group>
+            <material-list-item (click)="drawer.toggle();navegarPara(null)">
+                <material-icon icon="home"></material-icon>Painel
+            </material-list-item>
+            <material-list-item [disabled]="!possuiEmpresaSelecionada" (click)="drawer.toggle();navegarPara(null)">
+                <material-icon icon="work"></material-icon>Estratégia
+            </material-list-item>
+            <material-list-item [disabled]="!possuiEmpresaSelecionada" (click)="drawer.toggle();navegarPara(null)">
+                <material-icon icon="group"></material-icon>Objetivos
+            </material-list-item>
+            <material-list-item [disabled]="!possuiEmpresaSelecionada"   (click)="drawer.toggle();navegarPara('iniciativas')">
+                <material-icon icon="toc"></material-icon>Iniciativas
+            </material-list-item>
+            <material-list-item [disabled]="!possuiEmpresaSelecionada" (click)="drawer.toggle();navegarParaItensTrabalho()">
+                <material-icon icon="toc"></material-icon>Itens de Trabalho
+            </material-list-item>
+        </div>
+        <div group>
+            <div label>Estatística</div>
+            <material-list-item [disabled]="!possuiEmpresaSelecionada" (click)="drawer.toggle();navegarPara(null)">
+                <material-icon icon="dashboard"></material-icon>Mapa dos Objetivos
+            </material-list-item>
+            <material-list-item [disabled]="!possuiEmpresaSelecionada" (click)="drawer.toggle();navegarPara(null)">
+                <material-icon icon="filter"></material-icon>Iniciativas e tarefas
+            </material-list-item>
+        </div>
+    </material-list>
+</material-drawer>
+<material-content>
+    <header class="material-header shadow">
+        <div class="material-header-row">
+            <material-button icon
+                             class="material-drawer-button" (trigger)="drawer.toggle()">
+                <material-icon icon="menu"></material-icon>
+            </material-button>
+
+            <span class="material-header-title" *ngIf="opcaoMenuAtualDescricao == null">AUGE</span>
+
+            <span class="material-header-title" *ngIf="opcaoMenuAtualDescricao != null">{{opcaoMenuAtualDescricao}}</span>
+
+            <div class="material-spacer"></div>
+
+            <auge-busca *ngIf="buscaHabilitada == true">
+            </auge-busca>
+
+            <nav class="material-navigation">
+
+                <material-dropdown-select class="entidade"
+                                          [buttonText]="singleSelectEmpresaLabel"
+                                          [(selection)]="empresaSingleSelectModel"
+                                          [(options)]="empresaOptions"
+                                          [itemRenderer]="itemRenderer">
+                </material-dropdown-select>
+            </nav>
+        </div>
+    </header>
+    <div class="opcaoConteudo main">
+        <router-outlet [routes]="rotas"></router-outlet>
+    </div>
+</material-content>
+

@@ -1,0 +1,79 @@
+@import 'package:angular_components/css/material/material';
+
+:host {
+
+    display: block;
+    height: 600px;
+    position: relative;
+
+/*
+  border: 1px solid;
+  display: block;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  width: 800px;
+  */
+}
+
+.opcaoConteudo {
+  margin: 20px;
+}
+
+.entidade {
+  margin-top: 8px;
+ }
+
+
+.menu-drawer {
+
+   overflow: auto;
+}
+
+.opcaoMenu {
+
+}
+/*
+material-content material-drawer {
+    float: left;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+material-content header {
+    float: left;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.main {
+    overflow: hidden;
+    margin-top: 72px;
+}
+
+*/
+
+material-content material-drawer {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999999;
+}
+
+material-content header {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999999;
+}
+
+.main {
+    overflow: hidden;
+    margin-top: 72px;
+}

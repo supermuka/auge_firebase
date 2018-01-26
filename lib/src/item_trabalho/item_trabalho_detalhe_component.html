@@ -1,0 +1,58 @@
+<modal [visible]="true">
+    <material-dialog headered class="headered-dialog">
+
+        <div header>
+            <h3 *ngIf="itemTrabalho.chave == null">Adicionar Item de Trabalho</h3>
+            <h3 *ngIf="itemTrabalho.chave != null">Editar Item de Trabalho</h3>
+        </div>
+        <material-input type="text" class="width-300" [(ngModel)]="itemTrabalho.nome" floatingLabel label="Nome do Item de Trabalho" required [requiredErrorMsg]="msgValorRequerido"></material-input>
+        <!--
+        <material-input type="number" [(ngModel)]="percentualConcluido" trailingText="%" [rightAlign]="true"  floatingLabel label="Conclusão" [lowerBound]="0" [upperBound]="100" [error]="errorPercentualConcluido" [requiredErrorMsg]="msgValorRequerido"></material-input>
+        -->
+        <material-input type="percent" [(ngModel)]="percentualConcluido" trailingText="%" [rightAlign]="true"  floatingLabel label="Conclusão" [error]="errorPercentualConcluido"></material-input>
+
+        <br/>
+        <material-input type="text" class="width-300" [(ngModel)]="itemTrabalho.nota" floatingLabel multiline rows="3" label="Nota" required [requiredErrorMsg]="msgValorRequerido"></material-input>
+        <br/>
+        <material-input type="date" [(ngModel)]="dataInicioStr" floatingLabel [floatingLabelVisible]="true" label="Data Início" placeholder="" ></material-input>
+        <material-input type="date" [(ngModel)]="dataFimStr" floatingLabel label="Data Fim" required [requiredErrorMsg]="msgValorRequerido"></material-input>
+        <br/>
+        <label>Membro</label>
+
+        <material-auto-suggest-input
+                [(inputText)]="membroInputText"
+                [filterSuggestions]="true"
+                [popupMatchInputWidth]="true"
+                [leadingGlyph]="leadingGlyph"
+                [shouldClearOnSelection]="true"
+                [label]="label"
+                [emptyPlaceholder]="emptyPlaceholder"
+                [selection]="membroSingleSelectModel"
+                [selectionOptions]="membroOptions"
+                [itemRenderer]="membroItemRenderer"
+                [limit]="10">
+        </material-auto-suggest-input>
+
+        <material-chips [removeable]="true" *ngFor="let c of itemTrabalho.colaboradores">
+            <material-chip [hasLeftIcon]="true" (remove)="removerColaborador(c)">
+                <material-icon left-icon icon="link" size="large"></material-icon>
+                {{c.nome}}
+            </material-chip>
+
+        </material-chips>
+        <div footer>
+            <material-button (trigger)="salvar()">Salvar
+                <material-icon icon="save"></material-icon>
+            </material-button>
+
+            <material-button  [disabled]="itemTrabalho.chave == null" (trigger)="excluir()">Excluir
+                <material-icon icon="delete"></material-icon>
+            </material-button>
+
+            <material-button autoFocus (trigger)="fechar()">Voltar
+                <material-icon icon="arrow_back"></material-icon>
+            </material-button>
+        </div>
+
+    </material-dialog>
+</modal>

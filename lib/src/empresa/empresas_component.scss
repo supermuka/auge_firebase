@@ -1,0 +1,23 @@
+@import 'package:angular_components/css/material/material';
+@import 'package:angular_components/css/material/shadow';
+@import 'package:angular_components/material_button/mixins';
+@import 'package:angular_components/material_dialog/mixins';
+
+
+material-fab {
+    float: right;
+}
+
+.width-300 {
+   width: 300px;
+}
+
+.shadow-box {
+   @include material-shadow();
+}
+
+.shadow-box-list {
+   @include material-shadow();
+   padding: 8px;
+   margin: 8px;
+}

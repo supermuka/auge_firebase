@@ -1,0 +1,26 @@
+/* Copyright (c) 2017, Administrador. All rights reserved. Use of this source code
+   is governed by a BSD-style license that can be found in the LICENSE file. */
+
+/*
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Material+Icons);
+*/
+
+body {
+ /* max-width: 800px; */
+  margin: 0 auto;
+  padding: 0vw;
+}
+
+* {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+.shadow-box {
+    @include material-shadow();
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
